@@ -100,7 +100,6 @@ export function ProjectGrid({
         const edge = Math.max(Math.abs(x) / (vw / 2), Math.abs(y) / (vh / 2));
         const scale = 0.86 + 0.14 * Math.max(0, 1 - edge);
         el.style.opacity = "1";
-        el.style.zIndex = String(Math.round((1 - Math.min(edge, 1)) * 60));
         el.style.transform = `translate3d(calc(-50% + ${x}px), calc(-50% + ${y}px), 0) scale(${scale})`;
         el.style.pointerEvents = edge < 1.05 ? "auto" : "none";
       }
@@ -175,6 +174,7 @@ export function ProjectGrid({
               height: "clamp(220px, 40vh, 540px)",
               opacity: 0,
               pointerEvents: "none",
+              zIndex: (i * 7) % items.length,
             }}
             aria-label={`Open ${it.title}`}
           >
