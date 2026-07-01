@@ -151,7 +151,11 @@ export function ProjectGrid({
             }}
             onClick={() => onOpen(it.projectIndex)}
             className="absolute left-1/2 top-1/2 block cursor-pointer will-change-transform"
-            style={{ height: "clamp(220px, 40vh, 540px)", opacity: 0 }}
+            style={{
+              height: "clamp(220px, 40vh, 540px)",
+              opacity: 0,
+              pointerEvents: "none",
+            }}
             aria-label={`Open ${it.title}`}
           >
             <img
