@@ -113,10 +113,30 @@ export function ProjectGrid({
       e.started = true;
       e.sv += ev.deltaY * 0.00006;
     };
+
+    let lastTouchY = 0;
+    const onTouchStart = (ev: TouchEvent) => {
+      if (!visibleRef.current) return;
+      lastTouchY = ev.touches[0].clientY;
+    };
+    const onTouchMove = (ev: TouchEvent) => {
+      if (!visibleRef.current) return;
+      ev.preventDefault();
+      const y = ev.touches[0].clientY;
+      const dy = lastTouchY - y;
+      lastTouchY = y;
+      e.started = true;
+      e.sv += dy * 0.00018;
+    };
+
     window.addEventListener("wheel", onWheel, { passive: false });
+    window.addEventListener("touchstart", onTouchStart, { passive: true });
+    window.addEventListener("touchmove", onTouchMove, { passive: false });
     return () => {
       cancelAnimationFrame(raf);
       window.removeEventListener("wheel", onWheel);
+      window.removeEventListener("touchstart", onTouchStart);
+      window.removeEventListener("touchmove", onTouchMove);
     };
   });
 
