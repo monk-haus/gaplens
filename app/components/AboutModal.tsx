@@ -10,6 +10,7 @@ export function AboutModal({
 }) {
   const statement = studio.bio.slice(0, 13).join(" ");
   const coda = studio.bio.slice(13).join(" ");
+  const reveal = open ? "reveal " : "";
 
   return (
     <div
@@ -34,7 +35,7 @@ export function AboutModal({
       >
         <div className="flex min-h-screen flex-col items-center justify-center px-6 text-center">
           <p
-            className="reveal font-display italic"
+            className={`${reveal}font-display italic`}
             style={{
               fontSize: "clamp(1.4rem, 3.4vw, 2.8rem)",
               lineHeight: 1.14,
@@ -46,13 +47,13 @@ export function AboutModal({
             {statement}
           </p>
           <p
-            className="reveal mt-7 text-[11px] uppercase tracking-[0.32em] text-black/45 md:mt-9 md:text-xs"
+            className={`${reveal}mt-7 text-[11px] uppercase tracking-[0.32em] text-black/45 md:mt-9 md:text-xs`}
             style={{ animationDelay: "180ms" }}
           >
             {coda}
           </p>
           <nav
-            className="reveal mt-10 flex items-center gap-3 text-sm text-black/70 md:mt-14"
+            className={`${reveal}mt-10 flex items-center gap-3 text-sm text-black/70 md:mt-14`}
             style={{ animationDelay: "300ms" }}
           >
             <a
